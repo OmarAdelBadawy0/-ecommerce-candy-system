@@ -28,4 +28,38 @@ public class dataBase {
         items.add(item5);
         items.add(item6);
     }
+    
+    // print all saved users
+    public void printUsers() {
+        System.out.println("X-----------------Users---------------------X");
+        for (User user : users) {
+            System.out.println("Username: " + user.getUsername());
+            System.out.println("Password: " + user.getPassword());
+            System.out.println("Name: " + user.getName());
+            System.out.println("Address: " + user.getAddress());
+            System.out.println("Phone Number: " + user.getPhoneNumber());
+            System.out.println();
+        }
+    }
+
+    // view the catalog
+    public Item viewItems(){
+        Scanner scanner = new Scanner(System.in);
+        int counter = 0;
+
+
+        System.out.println("-----------------Items------------------");
+        for (Item item : items) {
+            System.out.println("Item NO: " + counter++ +"\nName: " + item.getName());
+            System.out.println("Price: " + item.getPrice());
+            System.out.println();
+
+        }
+        System.out.print("Enter the NO of item to select it: ");    // choose item from catalog then return it
+        int selectedItem = scanner.nextInt();
+
+        scanner.close();
+        return items.get(selectedItem);
+    }
+
 }
