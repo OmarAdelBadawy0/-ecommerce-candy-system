@@ -7,18 +7,18 @@ public class User {
     private String password;
     private String name;
     private String address;
-    private String phoneNumber;
+    private String PNum;
     private static User[] users = new User[10];
     private static int userCount = 0;
 
-    public User(String username, String password, String name, String address, String phoneNumber) {
+    public User(String username, String password, String name, String address, String PNum) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.PNum = PNum;
     }
-    public User(){};
+    public User(){}
 
     public void register() {
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +29,11 @@ public class User {
 
         System.out.print("Enter password: ");
         password = scanner.nextLine();
+        while (password.length() < 8){
+            System.out.println("Password should contain 8 Char or more");
+            System.out.print("Enter password: ");
+            password = scanner.nextLine();
+        }
 
         System.out.print("Enter name: ");
         name = scanner.nextLine();
@@ -37,9 +42,18 @@ public class User {
         address = scanner.nextLine();
 
         System.out.print("Enter phone number: ");
-        phoneNumber = scanner.nextLine();
+        PNum = scanner.nextLine();
 
-        users[userCount] = new User(username, password, name, address, phoneNumber);
+        while(true) {
+            if((PNum.length() == 11) && (PNum.charAt(0) == '0') && (PNum.charAt(1) == '1') && (PNum.charAt(2) == '0' || PNum.charAt(2) == '1' || PNum.charAt(2) == '2' || PNum.charAt(2) == '5'))
+                break;
+            System.out.println("please Enter a valid phone number");
+            System.out.print("Enter phone number: ");
+            PNum = scanner.nextLine();
+        }
+
+
+        users[userCount] = new User(username, password, name, address, PNum);
         userCount++;
 
         System.out.println("Registration successful!");
@@ -99,11 +113,11 @@ public class User {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return PNum;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.PNum = phoneNumber;
     }
 
 }
