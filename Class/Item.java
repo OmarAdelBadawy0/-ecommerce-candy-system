@@ -17,6 +17,7 @@ public class Item {
         this.price = price;
         this.discount = discount;
     }
+    public Item(){}
     public void showitem(){
         System.out.println("   " + name);
         System.out.println("   " + price);

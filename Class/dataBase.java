@@ -5,9 +5,9 @@ public class dataBase {
     public List<User> users = new ArrayList<>();
     public List<Item> items = new ArrayList<>();
     
-    User user1 = new User("johnsmith", "password1", "John Smith", "123 Main St", "555-1234");
-    User user2 = new User("janesmith", "password2", "Jane Smith", "456 Maple Ave", "555-5678");
-    User user3 = new User("bobdoe", "password3", "Bob Doe", "789 Oak St", "555-9012");
+    User user1 = new User("mohamed", "password1", "John Smith", "123 Main St", "01012345678");
+    User user2 = new User("omar", "password2", "Jane Smith", "456 Maple Ave", "01112345678");
+    User user3 = new User("yousif", "password3", "Bob Doe", "789 Oak St", "01212345678");
 
     Item item1 = new Item("Sour Patch Kids", "Salt-Candy", "Sour then sweet", "Cadbury", 1.99, 0.10);
     Item item2 = new Item("M&M's", "Sour-Candy", "Melts in your mouth, not in your hands", "Mars, Inc.", 2.49, 0.15);
@@ -57,7 +57,8 @@ public class dataBase {
         }
         System.out.print("Enter the NO of item to select it: ");    // choose item from catalog then return it
         int selectedItem = scanner.nextInt();
-
+        Item choosenitem = items.get(selectedItem);
+        choosenitem.showitem();
         scanner.close();
         return items.get(selectedItem);
     }
