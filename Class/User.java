@@ -40,43 +40,7 @@ public class User {
             System.out.print("Enter password: ");
             password = scanner.nextLine();
         }
-        //-----------------OTP--------------------
-        Random random = new Random();
-        int otp = 100000 + random.nextInt(900000);
-        // Set up properties for the email
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "your-smtp-hostname");
-        props.put("mail.smtp.port", "your-smtp-port");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
 
-        // Create a session with the email server
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("your-email-address", "your-email-password");
-            }
-        });
-
-        // Create a message to send
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("your-email-address"));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("user-email-address"));
-        message.setSubject("OTP Verification Code");
-        message.setText("Your OTP is: " + otp);
-
-        // Send the message
-        Transport.send(message);
-        System.out.print("Enter the OTP sent to your email: ");
-        int userOtp = scanner.nextInt();
-
-        while (userOtp != otp) {
-            System.out.println("OTP is incorrect. Please enter the OTP again.");
-            System.out.print("Enter the OTP sent to your email: ");
-            userOtp = scanner.nextInt();
-        }
-
-        //----------------------------------------
         System.out.print("Enter name: ");
         name = scanner.nextLine();
 

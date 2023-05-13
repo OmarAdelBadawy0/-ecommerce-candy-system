@@ -11,11 +11,17 @@ public class App {
         System.out.println("2. Login");
         System.out.println("3. Exit");
         System.out.print("Enter your choice: ");
-
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        
-
+        int choice ;
+        while(true){
+            System.out.print("Enter your choice: ");
+            try {
+                choice = scanner.nextInt();
+                break;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("pls Enter numbers from 1 - 3 , try again");
+                scanner.nextLine();
+            }
+        }
         User currentuser = null;
         ShoppingCart currentCart = new ShoppingCart();
         
@@ -34,20 +40,26 @@ public class App {
                 }
                 currentuser = loggedInUser;
             }
-            case 3 -> System.out.println("Exiting the Shop System");
-            default -> System.out.println("Invalid choice. Please try again.");
+            case 3 -> {
+                System.out.println("Exiting the Shop System");
+                System.exit(0);
+            }
+            default -> {
+                System.out.println("Invalid choice. Please try again.");
+                main(args);
+            }
         }
-
+        scanner.close();
         dataBase DataBase = new dataBase();
-
         while (true) {
             
             System.out.println("1- Show Cart");
             System.out.println("2- View Items");
             System.out.println("3- Exit");
-            int choice2 = scanner.nextInt();
+            Scanner scanner2 = new Scanner(System.in);
+            int choice2 ;
+            choice2 = scanner2.nextInt();
             scanner.nextLine();
-
             switch (choice2) {
                 case 1 -> {
                     currentCart.showCart(currentCart, currentuser);
@@ -76,8 +88,6 @@ public class App {
                 }
             }
         }
-
-
     }
 }
 
