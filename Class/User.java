@@ -30,8 +30,16 @@ public class User {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Registration:");
-        System.out.print("Enter Email: ");
-        username = scanner.nextLine();
+        while(true){
+            System.out.print("Enter Email: ");
+            try {
+                username = scanner.nextLine();
+                break;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("pls Enter valid email, try again");
+                scanner.nextLine();
+            }
+        }
         OTPSender otpSender = new OTPSender();
         otpSender.sendOTP(username);
 
@@ -43,12 +51,27 @@ public class User {
             password = scanner.nextLine();
         }
 
-        System.out.print("Enter name: ");
-        name = scanner.nextLine();
+        while(true){
+            System.out.print("Enter name: ");
+            try {
+                name = scanner.nextLine();
+                break;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("pls Enter valid email, try again");
+                scanner.nextLine();
+            }
+        }
 
-        System.out.print("Enter address: ");
-        address = scanner.nextLine();
-
+        while(true){
+            System.out.print("Enter address: ");
+            try {
+                address = scanner.nextLine();
+                break;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("pls Enter valid address, try again");
+                scanner.nextLine();
+            }
+        }
         System.out.print("Enter phone number: ");
         PNum = scanner.nextLine();
 
