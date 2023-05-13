@@ -1,14 +1,7 @@
 package Class;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
     private String username;
@@ -30,14 +23,20 @@ public class User {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Registration:");
-        while(true){
-            System.out.print("Enter Email: ");
-            try {
-                username = scanner.nextLine();
-                break;
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("pls Enter valid email, try again");
-                scanner.nextLine();
+        //ragex to add valid @gmail.com
+        boolean valid = false;
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"); // regex pattern to validate email
+        Matcher matcher;
+        while (!valid) {
+            System.out.print("Enter your email: ");
+            username = scanner.nextLine();
+            matcher = pattern.matcher(username);
+
+            if (matcher.matches()) {
+                valid = true;
+                System.out.println("Valid email entered: " + username);
+            } else {
+                System.out.println("Invalid email entered. Please try again.");
             }
         }
         OTPSender otpSender = new OTPSender();

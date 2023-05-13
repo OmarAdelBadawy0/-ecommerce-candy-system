@@ -16,6 +16,7 @@ public class App {
             System.out.print("Enter your choice: ");
             try {
                 choice = scanner.nextInt();
+
                 break;
             } catch (java.util.InputMismatchException e) {
                 System.out.println("pls Enter numbers from 1 - 3 , try again");
