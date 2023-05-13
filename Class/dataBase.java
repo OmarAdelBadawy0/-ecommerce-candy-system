@@ -66,8 +66,8 @@ public class dataBase {
     public boolean validLogin(String userName, String pass){
         for (User user : users) {
 
-            if (user.getUsername() == userName) {       // search of the user
-                if (user.getPassword() == pass) {       // check if the password is correct
+            if (user.getUsername().equals(userName)) {       // search of the user
+                if (user.getPassword().equals(pass)) {       // check if the password is correct
                     return true;
                 }else{
                     break;

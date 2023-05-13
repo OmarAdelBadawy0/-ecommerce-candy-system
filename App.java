@@ -33,58 +33,51 @@ public class App {
         }
 
         dataBase DataBase = new dataBase();
-        System.out.println("1-Show Items");
-        System.out.println("2-Exit");
-        int choice1 = scanner.nextInt();
-        switch (choice1) {
-            case 1 -> {
-                Item item1 = DataBase.viewItems();
-                System.out.print("Enter the quantity you want to this item: ");
-                int quantity = scanner.nextInt();
-                if (quantity < 0 || !scanner.hasNextInt()) {
-                    throw new IllegalArgumentException("Invalid quantity. Please enter a positive integer.");
-                }
-                ItemInCart itemincart = new ItemInCart(item1, quantity);
 
+        while (true) {
+            
+            System.out.println("1- Show Cart");
+            System.out.println("2- View Items");
+            System.out.println("3- Exit");
+            int choice2 = scanner.nextInt();
+
+            switch (choice2) {
+                case 1 -> {
+                    currentCart.showCart(currentCart, currentuser);
+                    break;
+                }
+                case 2 -> {
+                    Item item1 = DataBase.viewItems();
+                    System.out.print("Enter the quantity you want to this item: ");
+                    int quantity = scanner.nextInt();
+                    if (quantity < 0 || !scanner.hasNextInt()) {
+                        throw new IllegalArgumentException("Invalid quantity. Please enter a positive integer.");
+                    }
+                    currentCart.addItem(item1, quantity);
+                    break;    
+                }
+                case 3 -> {
+                    System.out.println("Exiting the Shop System");
+                    System.exit(0);
+                    break;
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please try again.");
+                    System.exit(0);
+                }
             }
-            case 2 -> {
-                System.out.println("Exiting the Shop System");
-                System.exit(0);
-            }
-            default -> System.out.println("Invalid choice. Please try again.");
         }
 
+
     }
+
+
+
+
+    
 }
 
 
-    /*
+    
 
-    public static void first_choice(){
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.println("1-Show Items");
-        System.out.println("2-Exit");
-        int choice1 = scanner1.nextInt();
-        switch (choice1){
-            case 1 :
-                Item item1 = DataBase.viewItems();
-                System.out.print("Enter the quantity you want to this item: ");
-                int quantity = scanner1.nextInt();
-                if (quantity < 0 || !scanner1.hasNextInt()) {
-                    throw new IllegalArgumentException("Invalid quantity. Please enter a positive integer.");
-                }
-                ItemInCart itemincart = new ItemInCart(item1,quantity);
 
-                break;
-            case 2:
-                System.out.println("Exiting the Shop System");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
-                break;
-
-        }
-    }
-}
- */
