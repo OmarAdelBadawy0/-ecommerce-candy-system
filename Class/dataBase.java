@@ -5,7 +5,7 @@ public class dataBase {
     public List<User> users = new ArrayList<>();
     public List<Item> items = new ArrayList<>();
     
-    User user1 = new User("mohamed", "password1", "John Smith", "123 Main St", "01012345678");
+    User user1 = new User("mohamed", "password1", "mohamed", "123 Main St", "01012345678");
     User user2 = new User("omar", "password2", "Jane Smith", "456 Maple Ave", "01112345678");
     User user3 = new User("yousif", "password3", "Bob Doe", "789 Oak St", "01212345678");
 
