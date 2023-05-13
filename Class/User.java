@@ -8,8 +8,6 @@ public class User {
     private String name;
     private String address;
     private String PNum;
-    private static User[] users = new User[10];
-    private static int userCount = 0;
 
     public User(String username, String password, String name, String address, String PNum) {
         this.username = username;
@@ -51,32 +49,29 @@ public class User {
             System.out.print("Enter phone number: ");
             PNum = scanner.nextLine();
         }
+        scanner.close();
 
-
-        users[userCount] = new User(username, password, name, address, PNum);
-        userCount++;
+        dataBase makeuser = new dataBase();
+        makeuser.addUser(username, password, name, address, PNum);
 
         System.out.println("Registration successful!");
     }
 
-    public User login() {
+    public boolean login() {
     	Scanner scanner = new Scanner(System.in);
     	String enteredUsername;
     	String enteredPassword;
+        
+
     	System.out.print("Enter username: ");
     	enteredUsername = scanner.nextLine();
     	System.out.print("Enter Password: ");
     	enteredPassword = scanner.nextLine();
-    	
-    	for (int i = 0; i < userCount; i++) {
-            User user = users[i];
-            if (enteredUsername.equals(user.getUsername()) && enteredPassword.equals(user.getPassword())) {
-                System.out.println("Login successful!");
-                return user;
-            }
-        }
-        System.out.println("Invalid username or password!");
-        return null;
+    	scanner.close();
+
+        dataBase checkLogin = new dataBase();
+        return(checkLogin.validLogin(enteredUsername, enteredPassword));
+
     }
 
 

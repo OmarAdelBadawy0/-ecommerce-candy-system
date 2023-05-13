@@ -19,10 +19,10 @@ public class Item {
     }
     public Item(){}
     public void showitem(){
-        System.out.println("   " + name);
-        System.out.println("   " + price);
-        System.out.println("Category : " + category);
-        System.out.print("Description : ");
+        System.out.println("\nName: " + name);
+        System.out.println("Price: " + price);
+        System.out.println("Category: " + category);
+        System.out.print("Description: ");
         System.out.println(description);
         System.out.println(brand);
     }

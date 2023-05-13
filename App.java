@@ -14,6 +14,7 @@ public class App {
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             User currentuser = null;
+            ShoppingCart currentCart = new ShoppingCart();
             switch (choice) {
                 case 1:
                     User user = new User("", "", "", "", "");
@@ -22,29 +23,34 @@ public class App {
                     break;
                 case 2:
                     User loggedInUser = new User();
-                    loggedInUser = loggedInUser.login();
-                    if (loggedInUser != null) {
-                        System.out.println("Logged in as " + loggedInUser.getName());
+                    
+                    if (loggedInUser.login()) {
+                        System.out.println("Logged in successfully ");
+                    }else{
+                        return;
                     }
                     currentuser = loggedInUser;
                     break;
                 case 3:
-                    Exit:
                     System.out.println("Exiting the Shop System");
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
+
             dataBase DataBase = new dataBase();
             System.out.println("1-Show Items");
             System.out.println("2-Exit");
             int choice1 = scanner.nextInt();
+            
             switch (choice1){
                 case 1 :
                     Item item1 = DataBase.viewItems();
+                    System.out.print("Enter the quantity you want to this item: ");
+                    int choice2 = scanner.nextInt();
+                    currentCart.addItem(item1, choice2);
                 case 2:
-                    Exit:
                     System.out.println("Exiting the Shop System");
                     System.exit(0);
                     break;

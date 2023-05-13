@@ -63,4 +63,24 @@ public class dataBase {
         return items.get(selectedItem);
     }
 
+    public boolean validLogin(String userName, String pass){
+        for (User user : users) {
+
+            if (user.getUsername() == userName) {       // search of the user
+                if (user.getPassword() == pass) {       // check if the password is correct
+                    return true;
+                }else{
+                    break;
+                }
+            }
+        }
+        System.out.println("Username or password is incorrect!!");
+        return false;
+    }
+
+    public void addUser(String username, String password, String name, String address, String PNum){
+        User newuser = new User(username, password, name, address, PNum);
+        users.add(newuser);
+    }
+
 }
