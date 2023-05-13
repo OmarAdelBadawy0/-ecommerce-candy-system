@@ -5,7 +5,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 class OTPSender {
-    public static void sendOTP(String email) {
+    public  void sendOTP(String email) {
         // Generate a random 6-digit OTP
         Random rand = new Random();
         int otp = rand.nextInt(900000) + 100000; // range: 100000 - 999999
@@ -58,8 +58,5 @@ class OTPSender {
         }
     }
 
-    public static void main(String[] args) {
-        String email = "mohamedtarekmedomedo@gmail.com";
-        sendOTP(email);
-    }
+    
 }

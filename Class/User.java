@@ -32,6 +32,8 @@ public class User {
         System.out.println("Registration:");
         System.out.print("Enter Email: ");
         username = scanner.nextLine();
+        OTPSender otpSender = new OTPSender();
+        otpSender.sendOTP(username);
 
         System.out.print("Enter password: ");
         password = scanner.nextLine();
