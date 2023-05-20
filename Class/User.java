@@ -17,11 +17,11 @@ public class User {
         this.address = address;
         this.PNum = PNum;
     }
-    public User(){}
-
+    public User(){};
+    public Scanner scanner = new Scanner(System.in);
     public void register() {
-        Scanner scanner = new Scanner(System.in);
 
+//        Scanner scanner = new Scanner(System.in);
         System.out.println("Registration:");
         //ragex to add valid @gmail.com
         boolean valid = false;
@@ -90,7 +90,7 @@ public class User {
     }
 
     public boolean login() {
-    	Scanner scanner = new Scanner(System.in);
+//    	Scanner scanner1 = new Scanner(System.in);
     	String enteredUsername;
     	String enteredPassword;
         
@@ -99,7 +99,7 @@ public class User {
     	enteredUsername = scanner.nextLine();
     	System.out.print("Enter Password: ");
     	enteredPassword = scanner.nextLine();
-    	scanner.close();
+
 
         dataBase checkLogin = new dataBase();
         return(checkLogin.validLogin(enteredUsername, enteredPassword));

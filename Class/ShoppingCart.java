@@ -38,6 +38,7 @@ public class ShoppingCart {
             System.out.println("------------------Items in your cart-------------------");
             System.out.println("Items in your cart:");
             System.out.printf("%-20s %-10s %-10s %-10s%n", "Item Name", "Price", "Quantity", "Total");
+            System.out.println();
             
             for (ItemInCart item : items) {
                 double totalPrice = item.getQuantity() * item.getItem().getPrice();
@@ -72,15 +73,21 @@ public class ShoppingCart {
                     System.out.println("2- new address");
                     int choice4 = scanner.nextInt();
 
-                    if (choice4 == 1) {
-                        address = currentuser.getAddress();
-                    }else if (choice4 == 2) {
-                        System.out.print("Enter your address: ");
-                        address = scanner.nextLine();
+                    switch (choice4) {
+                        case 1 ->{
+                            address = currentuser.getAddress();
+                            break;
+                        }
+                        case 2 -> {
+                            System.out.print("Enter your address: ");
+                            address = scanner.nextLine();
+                            break;
+                        }
+
                     }
     
                     Order neworOrder = new Order(cart,address,currentuser.getPhoneNumber());
-                    System.out.println("Total Amount: " + neworOrder.getTotalPrice() + " $");
+                    System.out.println("Total Amount: " + neworOrder.calculateTotalPrice() + " $");
                     System.out.println("Order placed successfully.");
                     System.out.println("Thank you for shopping with us.");
                     System.out.println("Your order will be delivered to " + address + " within 3 days.");

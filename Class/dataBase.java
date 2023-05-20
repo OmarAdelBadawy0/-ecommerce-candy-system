@@ -59,7 +59,6 @@ public class dataBase {
         int selectedItem = scanner.nextInt();
         Item choosenitem = items.get(selectedItem);
         choosenitem.showitem();
-        scanner.close();
         return items.get(selectedItem);
     }
 

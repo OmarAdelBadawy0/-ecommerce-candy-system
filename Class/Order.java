@@ -5,7 +5,7 @@ public class Order {
     private String shippingAddress;
     private String phoneNumber;
     private boolean shipped;
-    private double totalprice = calculateTotalPrice();
+    private double totalprice;
     
 
     public Order(ShoppingCart cart, String adress, String phoneNumber){
@@ -13,6 +13,7 @@ public class Order {
         shippingAddress = adress;
         this.phoneNumber = phoneNumber;
         shipped = false;
+        calculateTotalPrice();
     }
 
     public double calculateTotalPrice(){
