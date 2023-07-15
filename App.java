@@ -69,7 +69,6 @@ public class App {
                 System.out.println("Invalid choice. Please try again.");
                 continue;
             }
-
         }
     }
 }
